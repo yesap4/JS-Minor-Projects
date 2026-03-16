@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quote Generator</title>
+    <style>
+        body {
+            background: #0f0a1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1a1030;
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 580px;
+            text-align: center;
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            color: #a78bfa;
+            line-height: 0.5;
+        }
+
+        #quoteText {
+            font-size: 1.3rem;
+            color: #e0d0ff;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        #authorText {
+            color: #a78bfa;
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+
+        button {
+            background: #a78bfa;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 999px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Fade animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="quote-mark">"</div>
+        <p id="quoteText">Button dabao pehla quote aane ke liye!</p>
+        <p id="authorText">— ???</p>
+        <button onclick="showQuote()">✨ Naya Quote</button>
+    </div>
+
+    <script>
+        // Array of objects — har quote mein text aur author
+        const quotes = [
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+            { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+            { text: '20 Minutes Of Doing Something Is Greater Than 20 Hours Of Thinking About It.',author: 'Unknown'},
+            { text: 'A Focused Genius Achieves More Than A Distracted Genius',author: 'Unknown'},
+            { text: 'It is Getting Hard Because... You are getting Close To Success',author: 'Unknown'},
+            { text: 'Be So Great That... Your Enemy Loses The Hope Of Winning When They See You',author: 'Unknown'},
+            { text: 'A Winner Is A Loser Who Tried One More Time',author: 'Unknown'},
+            { text: 'Discipline Is Brutal But Regret Will Break You...',author: 'Unknown'},
+            { text: 'Do your duty (work) without worrying about the results',author: 'Lord Krishna'}
+            // TODO: 7 aur quotes apni marzi se add karo!
+        ];
+        
+        function showQuote() {
+            let qEl = document.getElementById("quoteText");
+            let aEl = document.getElementById("authorText");
+
+            const index = Math.floor(Math.random() * quotes.length);
+            const selected = quotes[index];
+
+            qEl.textContent = selected.text; 
+            aEl.textContent = `- ${selected.author}`;
+
+            qEl.classList.remove("fade");
+            qEl.offsetHeight; // ye line animation restart karti hai — magic line!
+            qEl.classList.add("fade");
+        }
+
+        // Page load pe pehla quote show karo
+        showQuote();
+    </script>
+</body>
+
+</html>

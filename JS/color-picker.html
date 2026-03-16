@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Picker</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: all 0.4s ease;
+      background: #1a1a2e;
+    }
+
+    .color-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s, border 0.2s;
+    }
+
+    .color-btn:hover { transform: scale(1.15); }
+
+    .color-btn.active {
+      border-color: white;
+      transform: scale(1.2);
+      border: 2px solid white;
+    }
+
+    /* TODO: .display-box ka CSS likho khud */
+
+  </style>
+</head>
+<body>
+
+  <h1 style="color:white; margin-bottom:30px">🎨 Pick a Color</h1>
+
+  <div style="display:flex; gap:16px; margin-bottom:30px">
+    <button class="color-btn" data-color="#e74c3c" data-name="Red"
+            style="background:#e74c3c"></button>
+    <button class="color-btn" data-color="#3498db" data-name="Blue"
+            style="background:#3498db"></button>
+    <button class="color-btn" data-color="#2ecc71" data-name="Green"
+            style="background:#2ecc71"></button>
+    <button class="color-btn" data-color="#f39c12" data-name="Orange"
+            style="background:#f39c12"></button>
+    <button class="color-btn" data-color="#9b59b6" data-name="Purple"
+            style="background:#9b59b6"></button>
+    <button class="color-btn" data-color="#1abc9c" data-name="Teal"
+            style="background:#1abc9c"></button>
+  </div>
+
+  <!-- TODO: ek div banao id="display" jisme color ka naam dikhega ✅--> 
+  <div id="display">
+    <p style="color: white;">The Color You Have Selected Is: None</p>
+  </div>
+  <script>
+    // Saare buttons ek saath pakdo 
+    const buttons = document.querySelectorAll(".color-btn");
+
+    // Har button pe click event lagao
+    buttons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+
+        // data-color ki value nikalo 
+        let color = btn.dataset.color;
+        let name  = btn.dataset.name;
+
+        // TODO: body ka background change karo✅
+        document.body.style.backgroundColor = color;
+        // TODO: display div mein naam dikhao ✅
+        document.getElementById('display').innerHTML = color;
+        document.getElementById('display').style.color = white;
+        // TODO: pehle sab buttons se "active" hatao,
+        buttons.forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        // phir is button pe "active" lagao
+        btn.classList.add('active');
+      });
+      });
+  </script>
+</body>
+</html>
