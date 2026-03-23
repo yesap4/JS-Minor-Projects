@@ -69,31 +69,29 @@
     let ampm = h >= 12 ? "PM" : "AM";
     let h12  = h % 12 || 12;
     
-    // TODO 1: #clock update karo — padStart(2,"0") use karo
+     
     const timeStr = `${String(h12).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
     document.getElementById('clock').innerText = timeStr;
     
-    // TODO 2: #ampm update karo
+    
      document.getElementById('ampm').innerText = ampm;
     
-    // TODO 3: #dateStr = now.toDateString()
+   
     document.getElementById('dateStr').innerText = now.toDateString();
     
-    // TODO 4: #secBar width = (s/59)*100 + "%"
     document.getElementById("secBar").style.width = (s / 59) * 100 + "%";
 
-    
-    // BONUS: body background — h ke hisaab se badle (subah/dopahar/shaam/raat)
+
         
-    // if (h >= 5 && h < 12) {
-    //         bodyColor = "#FFEFD5"; 
-    //     } else if (h >= 12 && h < 18) {
-    //         bodyColor = "#ADD8E6"; 
-    //     } else if (h >= 18 && h < 22) {
-    //         bodyColor = "#4B0082";
-    //     } else {
-    //         bodyColor = "#191970"; 
-    //     }
+     if (h >= 5 && h < 12) {
+             bodyColor = "#FFEFD5"; 
+         } else if (h >= 12 && h < 18) {
+             bodyColor = "#ADD8E6"; 
+         } else if (h >= 18 && h < 22) {
+             bodyColor = "#4B0082";
+         } else {
+             bodyColor = "#191970"; 
+         }
         document.body.style.backgroundColor = bodyColor;
   }
   updateClock();
